@@ -1,0 +1,79 @@
+﻿生成启动时间为 2017/3/5 11:25:14。
+     1>项目“G:\work7\Chess-master\Chess-master\build\lua.zo.vcxproj”在节点 4 上(Rebuild 个目标)。
+     1>ClCompile:
+         F:\Vs2012\VC\bin\CL.exe /c /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /Gy /arch:SSE2 /fp:precise /Zc:wchar_t /Zc:forScope /Fo"..\obj\Debug\lua.zo\\" /Fd"..\bin\debug\lua.zo.pdb" /Gd /TC /analyze- /errorReport:prompt -wd4996 ..\lua\lapi.c ..\lua\lauxlib.c ..\lua\lbaselib.c ..\lua\lbitlib.c ..\lua\lcode.c ..\lua\lcorolib.c ..\lua\lctype.c ..\lua\ldblib.c ..\lua\ldebug.c ..\lua\ldo.c ..\lua\ldump.c ..\lua\lfunc.c ..\lua\lgc.c ..\lua\linit.c ..\lua\liolib.c ..\lua\llex.c ..\lua\lmathlib.c ..\lua\lmem.c ..\lua\loadlib.c ..\lua\lobject.c ..\lua\lopcodes.c ..\lua\loslib.c ..\lua\lparser.c ..\lua\lstate.c ..\lua\lstring.c ..\lua\lstrlib.c ..\lua\ltable.c ..\lua\ltablib.c ..\lua\ltm.c ..\lua\lundump.c ..\lua\lvm.c ..\lua\lzio.c
+         lzio.c
+         lvm.c
+         lundump.c
+         ltm.c
+         ltablib.c
+         ltable.c
+         lstrlib.c
+         lstring.c
+         lstate.c
+         lparser.c
+         loslib.c
+         lopcodes.c
+         lobject.c
+         loadlib.c
+         lmem.c
+         lmathlib.c
+         llex.c
+         liolib.c
+         linit.c
+         lgc.c
+     1>g:\work7\chess-master\chess-master\lua\lgc.c(988): warning C4146: 一元负运算符应用于无符号类型，结果仍为无符号类型
+         正在生成代码...
+         正在编译...
+         lfunc.c
+         ldump.c
+         ldo.c
+         ldebug.c
+         ldblib.c
+         lctype.c
+         lcorolib.c
+         lcode.c
+         lbitlib.c
+         lbaselib.c
+         lauxlib.c
+         lapi.c
+         正在生成代码...
+       Lib:
+         F:\Vs2012\VC\bin\Lib.exe /OUT:"..\bin\debug\lua.zo.lib" /NOLOGO ..\obj\Debug\lua.zo\lapi.obj
+         ..\obj\Debug\lua.zo\lauxlib.obj
+         ..\obj\Debug\lua.zo\lbaselib.obj
+         ..\obj\Debug\lua.zo\lbitlib.obj
+         ..\obj\Debug\lua.zo\lcode.obj
+         ..\obj\Debug\lua.zo\lcorolib.obj
+         ..\obj\Debug\lua.zo\lctype.obj
+         ..\obj\Debug\lua.zo\ldblib.obj
+         ..\obj\Debug\lua.zo\ldebug.obj
+         ..\obj\Debug\lua.zo\ldo.obj
+         ..\obj\Debug\lua.zo\ldump.obj
+         ..\obj\Debug\lua.zo\lfunc.obj
+         ..\obj\Debug\lua.zo\lgc.obj
+         ..\obj\Debug\lua.zo\linit.obj
+         ..\obj\Debug\lua.zo\liolib.obj
+         ..\obj\Debug\lua.zo\llex.obj
+         ..\obj\Debug\lua.zo\lmathlib.obj
+         ..\obj\Debug\lua.zo\lmem.obj
+         ..\obj\Debug\lua.zo\loadlib.obj
+         ..\obj\Debug\lua.zo\lobject.obj
+         ..\obj\Debug\lua.zo\lopcodes.obj
+         ..\obj\Debug\lua.zo\loslib.obj
+         ..\obj\Debug\lua.zo\lparser.obj
+         ..\obj\Debug\lua.zo\lstate.obj
+         ..\obj\Debug\lua.zo\lstring.obj
+         ..\obj\Debug\lua.zo\lstrlib.obj
+         ..\obj\Debug\lua.zo\ltable.obj
+         ..\obj\Debug\lua.zo\ltablib.obj
+         ..\obj\Debug\lua.zo\ltm.obj
+         ..\obj\Debug\lua.zo\lundump.obj
+         ..\obj\Debug\lua.zo\lvm.obj
+         ..\obj\Debug\lua.zo\lzio.obj
+         lua.zo.vcxproj -> G:\work7\Chess-master\Chess-master\build\..\bin\debug\lua.zo.lib
+     1>已完成生成项目“G:\work7\Chess-master\Chess-master\build\lua.zo.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:03.96

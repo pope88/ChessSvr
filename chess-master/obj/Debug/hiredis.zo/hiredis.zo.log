@@ -1,0 +1,18 @@
+﻿  sds.c
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1925): warning C4005: 'snprintf': macro redefinition
+  g:\work7\chess-master\chess-master\hiredis\fmacros.h(7): note: see previous definition of 'snprintf'
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1927): fatal error C1189: #error:  Macro definition of snprintf conflicts with Standard Library function declaration
+  net.c
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1925): warning C4005: 'snprintf': macro redefinition
+  g:\work7\chess-master\chess-master\hiredis\fmacros.h(7): note: see previous definition of 'snprintf'
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1927): fatal error C1189: #error:  Macro definition of snprintf conflicts with Standard Library function declaration
+  hiredis.c
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1925): warning C4005: 'snprintf': macro redefinition
+  g:\work7\chess-master\chess-master\hiredis\fmacros.h(7): note: see previous definition of 'snprintf'
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1927): fatal error C1189: #error:  Macro definition of snprintf conflicts with Standard Library function declaration
+  dict.c
+  async.c
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1925): warning C4005: 'snprintf': macro redefinition
+  g:\work7\chess-master\chess-master\hiredis\fmacros.h(7): note: see previous definition of 'snprintf'
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1927): fatal error C1189: #error:  Macro definition of snprintf conflicts with Standard Library function declaration
+  Generating Code...

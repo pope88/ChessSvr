@@ -1,0 +1,17 @@
+{application, chess_gateway,
+ [
+  {description, "This is chess gateway server."},
+  {vsn, "1.0.0.0"},
+  {modules,
+  [
+  ]},
+  {registered, [chess_gateway_sup]},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  sasl
+                 ]},
+  {mod, { chess_gateway_app, []}},
+  {start_phases, []},
+  {env, []}
+ ]}.

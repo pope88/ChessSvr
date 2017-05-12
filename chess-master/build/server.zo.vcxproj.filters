@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="zo">
+      <UniqueIdentifier>{4243E32E-D721-B146-AC7C-19758FA6A7B3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Game">
+      <UniqueIdentifier>{B87B5DD3-AF18-A444-92C4-EF80B1C12C39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Game\Common">
+      <UniqueIdentifier>{1DE307BF-F8AE-AC4D-A898-935292CFB5C4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Game\Interface">
+      <UniqueIdentifier>{F50A57CA-AFF0-9648-A290-38EEA32F067D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Game\Logic">
+      <UniqueIdentifier>{5848A7CC-087C-8944-87D5-9431043AC926}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Model">
+      <UniqueIdentifier>{209154BF-368C-0443-AFA7-2AADC52E42C4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Model\BaseModel">
+      <UniqueIdentifier>{913816D3-D84E-A94A-A3B7-36B0965B8248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Model\Data">
+      <UniqueIdentifier>{03D1BDBA-1323-594C-92BC-E901DEE7B09F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Model\Item">
+      <UniqueIdentifier>{FB02E02A-7F6A-8348-AD75-930424648C9E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Model\Object">
+      <UniqueIdentifier>{593183D9-8D22-3B41-8648-A37AFDE9C427}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Packet">
+      <UniqueIdentifier>{98BA3AEB-3500-C64D-89BC-EEA03210A618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Script">
+      <UniqueIdentifier>{85C40C30-520B-D147-BDB3-6CDC27C035CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Worker">
+      <UniqueIdentifier>{DB589E67-0AFB-CF47-8C0E-AABB4DAC5008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zo\Packet\Handler">
+      <UniqueIdentifier>{beefb19d-483a-4cd3-a04d-9df4a6b70722}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\zo\Model\Object\ValidChars.inl">
+      <Filter>zo\Model\Object</Filter>
+    </None>
+    <None Include="..\zo\Model\Object\ValidWords.inl">
+      <Filter>zo\Model\Object</Filter>
+    </None>
+    <None Include="..\zo\Packet\Builder.inl">
+      <Filter>zo\Packet</Filter>
+    </None>
+    <None Include="..\zo\Script\ActionLuaImpl.inl">
+      <Filter>zo\Script</Filter>
+    </None>
+    <None Include="..\zo\Packet\Handler\Handlers.inl">
+      <Filter>zo\Packet\Handler</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\zo\ZoCfg.h">
+      <Filter>zo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\ZoGlobal.h">
+      <Filter>zo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Game\Common\CCard.h">
+      <Filter>zo\Game\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Game\Common\PlayCard.h">
+      <Filter>zo\Game\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Game\Common\Poker.h">
+      <Filter>zo\Game\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Game\Common\Rule.h">
+      <Filter>zo\Game\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Game\Interface\PlayerCreator.h">
+      <Filter>zo\Game\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Game\Interface\TableCreator.h">
+      <Filter>zo\Game\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Game\Logic\Poke.h">
+      <Filter>zo\Game\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\BaseModel\Chat.h">
+      <Filter>zo\Model\BaseModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\BaseModel\Mplayer.h">
+      <Filter>zo\Model\BaseModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\BaseModel\MSession.h">
+      <Filter>zo\Model\BaseModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\BaseModel\Mtable.h">
+      <Filter>zo\Model\BaseModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\BaseModel\ServerModule.h">
+      <Filter>zo\Model\BaseModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Data\CsvLoader.h">
+      <Filter>zo\Model\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Data\ItemMgr.h">
+      <Filter>zo\Model\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Data\NameGen.h">
+      <Filter>zo\Model\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Data\TimerData.h">
+      <Filter>zo\Model\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\GameRoom.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\GameTable.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\GameTimer.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\RoomManager.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\RoomPlayerManager.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\RoomTableManager.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\ServerManager.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\TableManager.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\TimerBase.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\User.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\UserManager.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Model\Object\ValidateName.h">
+      <Filter>zo\Model\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Packet\Builder.h">
+      <Filter>zo\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Packet\Gateway.h">
+      <Filter>zo\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Packet\PacketHead.h">
+      <Filter>zo\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Packet\Processor.h">
+      <Filter>zo\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Script\ActionLua.h">
+      <Filter>zo\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Script\lua_tinker.h">
+      <Filter>zo\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Script\Script.h">
+      <Filter>zo\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Worker\Base.h">
+      <Filter>zo\Worker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Worker\Game.h">
+      <Filter>zo\Worker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Worker\Tcp.h">
+      <Filter>zo\Worker</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Config.h" />
+    <ClInclude Include="..\zo\Game\Logic\LogicGameTable.h">
+      <Filter>zo\Game\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Game\Logic\LogicPlayer.h">
+      <Filter>zo\Game\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Packet\Handler\Handler.h">
+      <Filter>zo\Packet\Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\zo\Packet\Handler\UserLeaveTable.h">
+      <Filter>zo\Packet\Handler</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\zo\ZoCfg.cpp">
+      <Filter>zo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\ZoGlobal.cpp">
+      <Filter>zo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\ZoMain.cpp">
+      <Filter>zo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Common\PlayCard.cpp">
+      <Filter>zo\Game\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Common\Poker.cpp">
+      <Filter>zo\Game\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Interface\PlayerCreator.cpp">
+      <Filter>zo\Game\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Interface\TableCreator.cpp">
+      <Filter>zo\Game\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Logic\Poke.cpp">
+      <Filter>zo\Game\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\BaseModel\Chat.cpp">
+      <Filter>zo\Model\BaseModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\BaseModel\Mplayer.cpp">
+      <Filter>zo\Model\BaseModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\BaseModel\Mtable.cpp">
+      <Filter>zo\Model\BaseModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\BaseModel\ServerModule.cpp">
+      <Filter>zo\Model\BaseModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Data\CsvLoader.cpp">
+      <Filter>zo\Model\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Data\ExternVariables.cpp">
+      <Filter>zo\Model\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Data\NameGen.cpp">
+      <Filter>zo\Model\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Data\TimerData.cpp">
+      <Filter>zo\Model\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\GameRoom.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\GameTable.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\GameTimer.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\RoomManager.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\RoomPlayerManager.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\RoomTableManager.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\ServerManager.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\TableManager.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\User.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\UserManager.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\ValidateName.cpp">
+      <Filter>zo\Model\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Packet\Builder.cpp">
+      <Filter>zo\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Packet\Gateway.cpp">
+      <Filter>zo\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Packet\Packets.cpp">
+      <Filter>zo\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Packet\Processor.cpp">
+      <Filter>zo\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Script\ActionLua.cpp">
+      <Filter>zo\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Script\lua_tinker.cpp">
+      <Filter>zo\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Script\Script.cpp">
+      <Filter>zo\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Worker\Base.cpp">
+      <Filter>zo\Worker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Worker\Game.cpp">
+      <Filter>zo\Worker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Worker\Tcp.cpp">
+      <Filter>zo\Worker</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Config.cpp" />
+    <ClCompile Include="..\zo\Game\Logic\LogicGameTable.cpp">
+      <Filter>zo\Game\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Logic\LogicPlayer.cpp">
+      <Filter>zo\Game\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Packet\AllHandlers.cpp">
+      <Filter>zo\Packet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zo\Packet\Handler\Handler.cpp">
+      <Filter>zo\Packet\Handler</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

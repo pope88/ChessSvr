@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3CCF4E9E-45C6-324F-B5BA-D6C59F4F7131}</ProjectGuid>
+    <RootNamespace>server.zo</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\obj\Debug\server.zo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">server.zo</TargetName>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin\release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\obj\Release\server.zo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">server.zo</TargetName>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>-wd4996 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..;..\zo;..\ssu;..\event\include;..\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Config.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)server.zo.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;..\zo;..\ssu;..\event\include;..\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;mswsock.lib;kernel32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)server.zo.exe</OutputFile>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>-wd4996 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..;..\zo;..\ssu;..\event\include;..\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Config.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;..\zo;..\ssu;..\event\include;..\hiredis;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>database.zo.lib;mongo.zo.lib;hiredis.zo.lib;ws2_32.lib;mswsock.lib;kernel32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)server.zo.exe</OutputFile>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\zo\Game\Logic\LogicGameTable.h" />
+    <ClInclude Include="..\zo\Game\Logic\LogicPlayer.h" />
+    <ClInclude Include="..\zo\Packet\Handler\Handler.h" />
+    <ClInclude Include="..\zo\Packet\Handler\UserLeaveTable.h" />
+    <ClInclude Include="..\zo\ZoCfg.h" />
+    <ClInclude Include="..\zo\ZoGlobal.h" />
+    <ClInclude Include="..\zo\Game\Common\CCard.h" />
+    <ClInclude Include="..\zo\Game\Common\PlayCard.h" />
+    <ClInclude Include="..\zo\Game\Common\Poker.h" />
+    <ClInclude Include="..\zo\Game\Common\Rule.h" />
+    <ClInclude Include="..\zo\Game\Interface\PlayerCreator.h" />
+    <ClInclude Include="..\zo\Game\Interface\TableCreator.h" />
+    <ClInclude Include="..\zo\Game\Logic\Poke.h" />
+    <ClInclude Include="..\zo\Model\BaseModel\Chat.h" />
+    <ClInclude Include="..\zo\Model\BaseModel\Mplayer.h" />
+    <ClInclude Include="..\zo\Model\BaseModel\MSession.h" />
+    <ClInclude Include="..\zo\Model\BaseModel\Mtable.h" />
+    <ClInclude Include="..\zo\Model\BaseModel\ServerModule.h" />
+    <ClInclude Include="..\zo\Model\Data\CsvLoader.h" />
+    <ClInclude Include="..\zo\Model\Data\ItemMgr.h" />
+    <ClInclude Include="..\zo\Model\Data\NameGen.h" />
+    <ClInclude Include="..\zo\Model\Data\TimerData.h" />
+    <ClInclude Include="..\zo\Model\Object\GameRoom.h" />
+    <ClInclude Include="..\zo\Model\Object\GameTable.h" />
+    <ClInclude Include="..\zo\Model\Object\GameTimer.h" />
+    <ClInclude Include="..\zo\Model\Object\RoomManager.h" />
+    <ClInclude Include="..\zo\Model\Object\RoomPlayerManager.h" />
+    <ClInclude Include="..\zo\Model\Object\RoomTableManager.h" />
+    <ClInclude Include="..\zo\Model\Object\ServerManager.h" />
+    <ClInclude Include="..\zo\Model\Object\TimerBase.h" />
+    <ClInclude Include="..\zo\Model\Object\User.h" />
+    <ClInclude Include="..\zo\Model\Object\UserManager.h" />
+    <ClInclude Include="..\zo\Model\Object\ValidateName.h" />
+    <ClInclude Include="..\zo\Packet\Builder.h" />
+    <ClInclude Include="..\zo\Packet\Gateway.h" />
+    <ClInclude Include="..\zo\Packet\PacketHead.h" />
+    <ClInclude Include="..\zo\Packet\Processor.h" />
+    <ClInclude Include="..\zo\Script\ActionLua.h" />
+    <ClInclude Include="..\zo\Script\lua_tinker.h" />
+    <ClInclude Include="..\zo\Script\Script.h" />
+    <ClInclude Include="..\zo\Worker\Base.h" />
+    <ClInclude Include="..\zo\Worker\Game.h" />
+    <ClInclude Include="..\zo\Worker\Tcp.h" />
+    <ClInclude Include="..\Config.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\zo\Game\Logic\LogicGameTable.cpp" />
+    <ClCompile Include="..\zo\Game\Logic\LogicPlayer.cpp" />
+    <ClCompile Include="..\zo\Packet\AllHandlers.cpp" />
+    <ClCompile Include="..\zo\Packet\Handler\Handler.cpp" />
+    <ClCompile Include="..\zo\ZoCfg.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\ZoGlobal.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\ZoMain.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Common\PlayCard.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Common\Poker.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Interface\PlayerCreator.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Interface\TableCreator.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Game\Logic\Poke.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\BaseModel\Chat.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\BaseModel\Mplayer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\BaseModel\Mtable.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\BaseModel\ServerModule.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Data\CsvLoader.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Data\ExternVariables.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Data\NameGen.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Data\TimerData.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\GameRoom.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\GameTable.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\GameTimer.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\RoomManager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\RoomPlayerManager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\RoomTableManager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\ServerManager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\User.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\UserManager.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Model\Object\ValidateName.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Packet\Builder.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Packet\Gateway.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Packet\Packets.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Packet\Processor.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Script\ActionLua.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Script\lua_tinker.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Script\Script.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Worker\Base.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Worker\Game.cpp">
+    </ClCompile>
+    <ClCompile Include="..\zo\Worker\Tcp.cpp">
+    </ClCompile>
+    <ClCompile Include="..\Config.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\zo\Model\Object\ValidChars.inl" />
+    <None Include="..\zo\Model\Object\ValidWords.inl" />
+    <None Include="..\zo\Packet\Builder.inl" />
+    <None Include="..\zo\Packet\Handler\Handlers.inl" />
+    <None Include="..\zo\Script\ActionLuaImpl.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="system.zo.vcxproj">
+      <Project>{F5219A6D-5EA0-C14C-8F55-C926DF4130C1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="network.zo.vcxproj">
+      <Project>{369A749B-731F-2245-87AB-9146BC4DC699}</Project>
+    </ProjectReference>
+    <ProjectReference Include="lua.zo.vcxproj">
+      <Project>{D117A25F-9219-2B4A-A7EF-A7E2A546E5CE}</Project>
+    </ProjectReference>
+    <ProjectReference Include="event.zo.vcxproj">
+      <Project>{624435DE-D6D3-DF48-97F4-4F3281CEE159}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

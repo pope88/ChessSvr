@@ -1,0 +1,62 @@
+﻿生成启动时间为 2017/3/5 11:25:14。
+     1>项目“G:\work7\Chess-master\Chess-master\build\event.zo.vcxproj”在节点 5 上(Rebuild 个目标)。
+     1>ClCompile:
+         F:\Vs2012\VC\bin\CL.exe /c /I..\event\include /I..\event /I..\event\compat /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /Gy /arch:SSE2 /fp:precise /Zc:wchar_t /Zc:forScope /Fo"..\obj\Debug\event.zo\\" /Fd"..\bin\debug\event.zo.pdb" /Gd /TC /analyze- /errorReport:prompt -wd4996 ..\event\event.c ..\event\buffer.c ..\event\bufferevent.c ..\event\bufferevent_sock.c ..\event\bufferevent_pair.c ..\event\listener.c ..\event\evmap.c ..\event\log.c ..\event\evutil.c ..\event\strlcpy.c ..\event\signal.c ..\event\bufferevent_filter.c ..\event\evthread.c ..\event\bufferevent_ratelim.c ..\event\evutil_rand.c ..\event\event_tagging.c ..\event\http.c ..\event\evdns.c ..\event\evrpc.c ..\event\win32select.c ..\event\evthread_win32.c ..\event\buffer_iocp.c ..\event\event_iocp.c ..\event\bufferevent_async.c
+         bufferevent_async.c
+         event_iocp.c
+         buffer_iocp.c
+         evthread_win32.c
+         win32select.c
+         evrpc.c
+         evdns.c
+         http.c
+         event_tagging.c
+         evutil_rand.c
+         bufferevent_ratelim.c
+         evthread.c
+         bufferevent_filter.c
+         signal.c
+         strlcpy.c
+         evutil.c
+         log.c
+         evmap.c
+         listener.c
+         bufferevent_pair.c
+         正在生成代码...
+         正在编译...
+         bufferevent_sock.c
+         bufferevent.c
+         buffer.c
+         event.c
+         正在生成代码...
+       Lib:
+         F:\Vs2012\VC\bin\Lib.exe /OUT:"..\bin\debug\event.zo.lib" /NOLOGO ..\obj\Debug\event.zo\event.obj
+         ..\obj\Debug\event.zo\buffer.obj
+         ..\obj\Debug\event.zo\bufferevent.obj
+         ..\obj\Debug\event.zo\bufferevent_sock.obj
+         ..\obj\Debug\event.zo\bufferevent_pair.obj
+         ..\obj\Debug\event.zo\listener.obj
+         ..\obj\Debug\event.zo\evmap.obj
+         ..\obj\Debug\event.zo\log.obj
+         ..\obj\Debug\event.zo\evutil.obj
+         ..\obj\Debug\event.zo\strlcpy.obj
+         ..\obj\Debug\event.zo\signal.obj
+         ..\obj\Debug\event.zo\bufferevent_filter.obj
+         ..\obj\Debug\event.zo\evthread.obj
+         ..\obj\Debug\event.zo\bufferevent_ratelim.obj
+         ..\obj\Debug\event.zo\evutil_rand.obj
+         ..\obj\Debug\event.zo\event_tagging.obj
+         ..\obj\Debug\event.zo\http.obj
+         ..\obj\Debug\event.zo\evdns.obj
+         ..\obj\Debug\event.zo\evrpc.obj
+         ..\obj\Debug\event.zo\win32select.obj
+         ..\obj\Debug\event.zo\evthread_win32.obj
+         ..\obj\Debug\event.zo\buffer_iocp.obj
+         ..\obj\Debug\event.zo\event_iocp.obj
+         ..\obj\Debug\event.zo\bufferevent_async.obj
+         event.zo.vcxproj -> G:\work7\Chess-master\Chess-master\build\..\bin\debug\event.zo.lib
+     1>已完成生成项目“G:\work7\Chess-master\Chess-master\build\event.zo.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:12.58

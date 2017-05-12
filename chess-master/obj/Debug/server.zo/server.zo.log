@@ -1,0 +1,54 @@
+﻿生成启动时间为 2017/3/6 7:44:03。
+     1>项目“G:\work7\Chess-master\Chess-master\build\server.zo.vcxproj”在节点 2 上(Build 个目标)。
+     1>Link:
+         F:\Vs2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\bin\debug\server.zo.exe" /INCREMENTAL /NOLOGO ws2_32.lib mswsock.lib kernel32.lib user32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"..\bin\debug\server.zo.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /ENTRY:"mainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\bin\debug\server.zo.lib" /MACHINE:X86 ..\obj\Debug\server.zo\LogicGameTable.obj
+         ..\obj\Debug\server.zo\LogicPlayer.obj
+         ..\obj\Debug\server.zo\AllHandlers.obj
+         ..\obj\Debug\server.zo\Handler.obj
+         ..\obj\Debug\server.zo\ZoCfg.obj
+         ..\obj\Debug\server.zo\ZoGlobal.obj
+         ..\obj\Debug\server.zo\ZoMain.obj
+         ..\obj\Debug\server.zo\PlayCard.obj
+         ..\obj\Debug\server.zo\Poker.obj
+         ..\obj\Debug\server.zo\PlayerCreator.obj
+         ..\obj\Debug\server.zo\TableCreator.obj
+         ..\obj\Debug\server.zo\Poke.obj
+         ..\obj\Debug\server.zo\Chat.obj
+         ..\obj\Debug\server.zo\Mplayer.obj
+         ..\obj\Debug\server.zo\Mtable.obj
+         ..\obj\Debug\server.zo\ServerModule.obj
+         ..\obj\Debug\server.zo\CsvLoader.obj
+         ..\obj\Debug\server.zo\ExternVariables.obj
+         ..\obj\Debug\server.zo\NameGen.obj
+         ..\obj\Debug\server.zo\TimerData.obj
+         ..\obj\Debug\server.zo\GameRoom.obj
+         ..\obj\Debug\server.zo\GameTable.obj
+         ..\obj\Debug\server.zo\GameTimer.obj
+         ..\obj\Debug\server.zo\RoomManager.obj
+         ..\obj\Debug\server.zo\RoomPlayerManager.obj
+         ..\obj\Debug\server.zo\RoomTableManager.obj
+         ..\obj\Debug\server.zo\ServerManager.obj
+         ..\obj\Debug\server.zo\User.obj
+         ..\obj\Debug\server.zo\UserManager.obj
+         ..\obj\Debug\server.zo\ValidateName.obj
+         ..\obj\Debug\server.zo\Builder.obj
+         ..\obj\Debug\server.zo\Gateway.obj
+         ..\obj\Debug\server.zo\Packets.obj
+         ..\obj\Debug\server.zo\Processor.obj
+         ..\obj\Debug\server.zo\ActionLua.obj
+         ..\obj\Debug\server.zo\lua_tinker.obj
+         ..\obj\Debug\server.zo\Script.obj
+         ..\obj\Debug\server.zo\Base.obj
+         ..\obj\Debug\server.zo\Game.obj
+         ..\obj\Debug\server.zo\Tcp.obj
+         ..\obj\Debug\server.zo\Config.obj
+         "G:\work7\Chess-master\Chess-master\bin\debug\system.zo.lib"
+         "G:\work7\Chess-master\Chess-master\bin\debug\network.zo.lib"
+         "G:\work7\Chess-master\Chess-master\bin\debug\lua.zo.lib"
+         "G:\work7\Chess-master\Chess-master\bin\debug\event.zo.lib"
+         server.zo.vcxproj -> G:\work7\Chess-master\Chess-master\build\..\bin\debug\server.zo.exe
+     1>已完成生成项目“G:\work7\Chess-master\Chess-master\build\server.zo.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:07.53

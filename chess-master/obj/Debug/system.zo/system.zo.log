@@ -1,0 +1,62 @@
+﻿生成启动时间为 2017/3/5 11:25:14。
+     1>项目“G:\work7\Chess-master\Chess-master\build\system.zo.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         F:\Vs2012\VC\bin\CL.exe /c /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /Gy /arch:SSE2 /fp:precise /Zc:wchar_t /Zc:forScope /Fo"..\obj\Debug\system.zo\\" /Fd"..\bin\debug\system.zo.pdb" /Gd /TP /analyze- /errorReport:prompt -wd4996 ..\System\Clock.cpp ..\System\CsvParser.cpp ..\System\DigestEngine.cpp ..\System\DirectoryIterator.cpp ..\System\Err.cpp ..\System\Event.cpp ..\System\File.cpp ..\System\IniFile.cpp ..\System\Lock.cpp ..\System\Logger.cpp ..\System\Mutex.cpp ..\System\NumberConv.cpp ..\System\Path.cpp ..\System\Platform.cpp ..\System\Random.cpp ..\System\Serialize.cpp ..\System\SHA1Engine.cpp ..\System\Sleep.cpp ..\System\String.cpp ..\System\StringTokenizer.cpp ..\System\Thread.cpp ..\System\ThreadLocal.cpp ..\System\Timer.cpp ..\System\TimeUtil.cpp
+         TimeUtil.cpp
+         Timer.cpp
+         ThreadLocal.cpp
+         Thread.cpp
+         StringTokenizer.cpp
+         String.cpp
+         Sleep.cpp
+         SHA1Engine.cpp
+         Serialize.cpp
+         Random.cpp
+         Platform.cpp
+         Path.cpp
+         NumberConv.cpp
+         Mutex.cpp
+         Logger.cpp
+         Lock.cpp
+         IniFile.cpp
+         File.cpp
+         Event.cpp
+         Err.cpp
+         正在生成代码...
+         正在编译...
+         DirectoryIterator.cpp
+         DigestEngine.cpp
+         CsvParser.cpp
+         Clock.cpp
+         正在生成代码...
+       Lib:
+         F:\Vs2012\VC\bin\Lib.exe /OUT:"..\bin\debug\system.zo.lib" /NOLOGO ..\obj\Debug\system.zo\Clock.obj
+         ..\obj\Debug\system.zo\CsvParser.obj
+         ..\obj\Debug\system.zo\DigestEngine.obj
+         ..\obj\Debug\system.zo\DirectoryIterator.obj
+         ..\obj\Debug\system.zo\Err.obj
+         ..\obj\Debug\system.zo\Event.obj
+         ..\obj\Debug\system.zo\File.obj
+         ..\obj\Debug\system.zo\IniFile.obj
+         ..\obj\Debug\system.zo\Lock.obj
+         ..\obj\Debug\system.zo\Logger.obj
+         ..\obj\Debug\system.zo\Mutex.obj
+         ..\obj\Debug\system.zo\NumberConv.obj
+         ..\obj\Debug\system.zo\Path.obj
+         ..\obj\Debug\system.zo\Platform.obj
+         ..\obj\Debug\system.zo\Random.obj
+         ..\obj\Debug\system.zo\Serialize.obj
+         ..\obj\Debug\system.zo\SHA1Engine.obj
+         ..\obj\Debug\system.zo\Sleep.obj
+         ..\obj\Debug\system.zo\String.obj
+         ..\obj\Debug\system.zo\StringTokenizer.obj
+         ..\obj\Debug\system.zo\Thread.obj
+         ..\obj\Debug\system.zo\ThreadLocal.obj
+         ..\obj\Debug\system.zo\Timer.obj
+         ..\obj\Debug\system.zo\TimeUtil.obj
+         system.zo.vcxproj -> G:\work7\Chess-master\Chess-master\build\..\bin\debug\system.zo.lib
+     1>已完成生成项目“G:\work7\Chess-master\Chess-master\build\system.zo.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:25.53

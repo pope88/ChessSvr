@@ -1,0 +1,11 @@
+﻿  numbers.c
+  mongo.c
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1925): warning C4005: 'snprintf': macro redefinition
+  g:\work7\chess-master\chess-master\mongo\mongo.c(23): note: see previous definition of 'snprintf'
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1927): fatal error C1189: #error:  Macro definition of snprintf conflicts with Standard Library function declaration
+  md5.c
+  gridfs.c
+  env.c
+  encoding.c
+  bson.c
+  Generating Code...

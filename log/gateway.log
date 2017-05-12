@@ -1,0 +1,155 @@
+[info]: 2017-04-10T10:54:43.102+08:00, Gateway_svr start...
+[info]: 2017-04-10T10:54:43.104+08:00, Gateway_svr start ok
+[info]: 2017-04-10T11:12:00.008+08:00, Gateway_svr start...
+[info]: 2017-04-10T11:12:00.010+08:00, Gateway_svr start ok
+[info]: 2017-04-10T11:39:55.228+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T11:39:55.230+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T12:25:40.244+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T12:25:40.247+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T12:25:40.263+08:00, Gateway_svr stop...[reason]:shutdown, 
+
+[info]: 2017-04-10T12:30:06.462+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T12:30:06.464+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T12:30:06.496+08:00, Gateway_svr stop...[reason]:shutdown, 
+
+[info]: 2017-04-10T12:34:55.584+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T12:34:55.588+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T12:34:55.619+08:00, Gateway_svr stop...[reason]:shutdown, 
+
+[info]: 2017-04-10T12:39:13.017+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T12:39:13.020+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T12:59:05.959+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T12:59:05.962+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T13:05:04.649+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T13:05:04.652+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T13:08:21.689+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T13:08:21.692+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T13:19:04.936+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T13:19:04.940+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T13:22:35.151+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T13:22:35.153+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T13:22:49.491+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T13:22:49.499+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T13:25:46.299+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T13:25:46.302+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T13:32:23.587+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T13:32:23.589+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T16:36:41.981+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T16:36:41.991+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T16:47:47.567+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T16:47:47.567+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T17:39:24.017+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T17:39:24.071+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T17:57:33.316+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T17:57:33.316+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T17:59:18.077+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T17:59:18.077+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T18:16:10.518+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T18:16:10.519+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T18:31:00.418+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T18:31:00.418+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T18:32:29.883+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T18:32:29.884+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T18:33:26.049+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T18:33:26.050+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T18:34:32.701+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T18:34:32.702+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T18:37:48.283+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T18:37:48.284+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T18:41:19.600+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T18:41:19.602+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T18:41:42.881+08:00, svr stop...[reason]:{undef,
+                        [{maps,get,[chess_gateway],[]},
+                         {svr,get_next_conn,2,
+                             [{file,"src/gate_svr/svr.erl"},{line,147}]},
+                         {svr,handle_call,3,
+                             [{file,"src/gate_svr/svr.erl"},{line,131}]},
+                         {gen_server,try_handle_call,4,
+                             [{file,"gen_server.erl"},{line,615}]},
+                         {gen_server,handle_msg,5,
+                             [{file,"gen_server.erl"},{line,647}]},
+                         {proc_lib,init_p_do_apply,3,
+                             [{file,"proc_lib.erl"},{line,247}]}]}, 
+
+[info]: 2017-04-10T18:51:33.965+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T18:51:33.966+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T18:52:45.347+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T18:52:45.348+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T18:55:09.486+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T18:55:09.487+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T19:10:37.367+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T19:10:37.368+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T19:12:43.711+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T19:12:43.711+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T19:18:00.021+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T19:18:00.021+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T23:15:40.600+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T23:15:40.601+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T23:17:53.094+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T23:17:53.095+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T23:37:18.501+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T23:37:18.502+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T23:38:00.305+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T23:38:00.306+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T23:43:53.401+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T23:43:53.403+08:00, Gateway_svr start ok.
+[info]: 2017-04-10T23:46:10.694+08:00, Gateway_svr start begin.
+[info]: 2017-04-10T23:46:10.695+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T00:04:59.116+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T00:04:59.117+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T00:07:29.125+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T00:07:29.126+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T00:08:39.607+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T00:08:39.608+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T00:11:39.688+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T00:11:39.689+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T00:11:48.767+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T00:11:48.767+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T00:12:21.676+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T00:12:21.677+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T00:14:18.844+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T00:14:18.845+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T00:26:30.014+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T00:26:30.015+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T00:34:15.942+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T00:34:15.942+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T00:45:47.511+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T00:45:47.512+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T01:11:02.213+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T01:11:02.213+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T01:12:11.740+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T01:12:11.741+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T01:35:57.684+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T01:35:57.685+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T01:42:57.506+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T01:42:57.506+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T01:53:45.572+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T01:53:45.573+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T01:54:47.194+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T01:54:47.194+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T02:21:57.751+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T02:21:57.752+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T02:27:15.262+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T02:27:15.263+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T02:34:05.752+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T02:34:05.753+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T03:19:38.478+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T03:19:38.479+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T04:41:17.101+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T04:41:17.102+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T04:42:08.946+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T04:42:08.947+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T04:42:59.427+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T04:42:59.427+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T04:47:58.990+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T04:47:58.991+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T04:50:01.430+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T04:50:01.430+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T04:58:15.783+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T04:58:15.784+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T04:59:11.218+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T04:59:11.219+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T15:05:09.398+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T15:05:09.399+08:00, Gateway_svr start ok.
+[info]: 2017-04-11T15:49:51.037+08:00, Gateway_svr start begin.
+[info]: 2017-04-11T15:49:51.038+08:00, Gateway_svr start ok.

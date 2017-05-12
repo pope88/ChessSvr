@@ -1,0 +1,51 @@
+
+// ---------------------------gate_svr_recv---------------------------
+message gate_svr_recv_state
+{
+	// socket
+	required uint32 socket   = 1;
+	// parent pid
+	required uint32 parent   = 2;
+	// logfun
+	optional uint32 log_fun  = 3;
+	// data
+	optional uint32 data     = 4;
+}
+
+// ---------------------------gate_svr_conn---------------------------
+message gate_svr_conn_state
+{
+	//
+	required uint32 recv_pid = 1;
+	//
+	required uint32 socket   = 2;
+	//
+	optional uint32 log_fun  = 3;
+	// 
+	optional uint32 pool_id  = 4;
+	// 
+	optional uint32 data     = 5;
+}
+
+// ---------------------------gate_svr--------------------------------
+message svr_conn 
+{
+	// atom(), the pool's id
+	required uint32  pool_id   = 1; 
+	// pid(), svr_conn process
+	required uint32  conn_pid  = 2; 	
+	// true | false, should mysql_dispatcher try to reconnect if this connection dies?
+  	optional bool    reconnect = 3;  
+  	// 
+  	optional string  host      = 4;
+  	// 
+  	optional uint32  port      = 5;
+}
+
+message svr_state
+{
+	// gb_tree mapping connection,pool id to a connection pool tuple
+	required uint32 conn_pools = 1;
+	// gb_tree mapping connection Pid to pool id
+	required uint32 pids_pools = 2;
+}

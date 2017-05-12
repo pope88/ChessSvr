@@ -1,0 +1,16 @@
+
+
+// 0x01
+// 登录信息
+message packlen
+{
+	required fixed32 op     = 1;
+	required fixed32 size   = 2;
+}
+
+message CSPlayerLogin_0x01
+{
+    required string account         = 1; //平台账户名
+    optional string token           = 2; //平台拿到的token，登录的时候logicSvr和平台去校验
+    optional uint32 wallow          = 3;
+}

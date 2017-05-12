@@ -1,0 +1,244 @@
+option optimize_for = LITE_RUNTIME;
+option cc_generic_services = false;
+package game.net.data.StoC;
+
+
+// 0x01
+// 玩家注册
+message SCUserRegister_0x01
+{
+  // 注册结果
+  // 0 - 成功  1 - 名字重复  2 - 名字含有非法字符
+  required uint32 result = 1;
+  // 登录后用户ID
+  optional uint32 userId = 2;
+}
+
+// 0x02
+// 登录信息
+message SCUserLogin_0x02
+ {
+  // 登录结果
+  // 0 - 成功  1 - 新用户需要注册  2 - 被封禁
+  required uint32 result = 1;
+  // 登录后用户ID （即用户名）
+  optional uint32 userId = 2;
+  // 登录用户名，或者推荐注册名
+  optional string userName = 3;
+  // 登录用户vip等级
+  optional uint32 vipLevel = 4;
+  // 封禁剩余时间
+  optional uint32 banTime = 5;
+  //新手引导步骤更新
+  repeated uint32 steps = 6 [packed=true];
+  
+}
+
+//0x03
+// 玩家信息
+message SCUserInfo_0x03
+{
+  // 金币
+  required uint32 gold = 1;
+  // 总充值量
+  required uint32 totalTopup = 2;
+  // 总消费值
+  required uint32 totalConsume = 3;
+}
+
+//房间信息
+message RoomInfo
+{
+   //房间号
+   required uint32 roomId = 1;
+   //玩家数
+   required uint32 palyerNum = 2;
+}
+//0x04
+//玩家请求房间信息
+message SCUserRoomList_0x04
+{
+   //list
+   repeated RoomInfo rmlist = 1;
+}
+
+//0x05
+//玩家请求房间列表信息
+message SCUserRoomInfo_0x05
+{
+ 
+}
+
+//0x06
+//玩家请求进入房间
+message SCUserEnterRoom_0x06
+{
+  //玩家进入失败
+  required uint32 res = 1;
+}
+
+message PlayerBaseInfo
+{
+  //位置号 
+  required uint32 chairid = 1;
+  //昵称
+  required string nickname = 2;
+  //所带筹码
+  required uint32 allchips = 3;
+}
+
+//0x07
+//玩家请求进入桌子
+message SCUserEnterTable_0x07
+{
+  //玩家进入桌子(for the enter palayer 0:success 1:fail)
+  optional uint32 res = 1;
+  //for the enter player, playerinfos is the other player infos ，for the ohter player,playerinfos is the enter player's info first must be the palyer own
+  repeated PlayerBaseInfo playerinfos= 2;
+}
+
+//0x08
+//快速比赛失败
+message SCUserPlayerNow_0x08
+{
+  //玩家快速比赛结果
+  required uint32 res = 1;
+  //快速进入桌子信息
+  //基础底注
+  required uint32 basechips = 2;
+  //至少带入的筹码数
+  required uint32 lowestchips = 3;
+}
+
+message PGStatus
+{
+  //位置号
+  required uint32 chairid = 1;
+  //状态
+  required uint32 status = 2;
+}
+
+//0x09
+//游戏开始通知
+message SCPlayerGameSart_0x09
+{
+   //基础底注
+   required uint32 basechips = 1;
+   //至少带入的筹码数
+   required uint32 lowestchips = 2;
+   //庄家位置
+   required uint32 bosschairpos = 3;
+   //大盲注的位置
+   required uint32 bigblindpos = 4;
+   //小盲注的位置
+   required uint32 smallblindpos = 5;
+}
+
+//0x10
+//通知玩家的状态
+message SCPlayerGameStatus_0x10
+{
+  //玩家状态
+  repeated PGStatus playerstatus = 1;
+}
+
+//0x11
+//自动下大小盲底注
+message SCPlayerBlindChips_0x11
+{
+  message blindInfo
+  {
+    //blind chairid
+	required uint32 chairid;
+	//blind chips
+	required uint32 chips;
+	//remain chips
+	required uint32 remainchips;
+	
+  }
+  required uint32 tableamount = 1;
+  repeated blindInfo blindinfos = 2;
+}
+
+//卡牌
+message card
+{
+  //卡牌
+  required uint32 cardvalue = 1;
+  //花色
+  required uint32 cardcolor = 2;
+}
+
+//0x12
+//手牌
+message SCPlayerHandCards_0x12
+{
+  //位置
+  required uint32 pos = 1;
+  //手牌
+  repeated card cards = 2;
+}
+
+//0x13
+//公共
+message SCPlayerCommonCards_0x13
+{
+   //阶段
+   required uint32 step = 1;
+   //cards
+   repeated card cards = 2;
+}
+
+//0x14
+//操作请求
+message SCPlayerOperateReq_0x14
+{
+   //操作
+   required uint32 opcode = 1;
+   //chairId
+   required uint32 chairid = 2;
+   //基础筹码
+   required uint32 basechips = 3;
+   //当前下注
+   required uint32 currentchips = 4;
+}
+
+//0x15
+//操作通知
+message SCPlayerOperateNot_0x15
+{
+   //操作
+   required uint32 opcode = 1;
+   //chairId
+   required uint32 chairid = 2;
+   //当前下注
+   required uint32 currentchips = 3;
+   //当前剩余筹码
+   required uint32 leavechips = 4;
+   //总筹码
+   required uint32 totalchips = 5;
+}
+
+//0x16
+//玩家请求离开桌子
+message SCUserLeaveTable_0x16
+{
+ //桌子号
+  required uint32 chairid = 1;
+}
+
+//0x17
+//服务端控制客户端定时
+message SCUserTimerStart_0x17
+{
+  //位置(nil common timer)
+  optional uint32 chairid = 1;
+  //定时
+  required uint32 timer = 2;
+}
+
+//0x20
+//游戏结束
+message SCEndRound_0x18
+{
+}

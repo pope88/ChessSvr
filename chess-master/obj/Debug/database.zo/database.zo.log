@@ -1,0 +1,9 @@
+﻿  MongoMgr.cpp
+  MongoExecutor.cpp
+g:\work7\chess-master\chess-master\mongo\bson.h(69): warning C4005: 'INT32_MAX': macro redefinition
+  f:\vs2015\vc\include\stdint.h(54): note: see previous definition of 'INT32_MAX'
+  MongoAction.cpp
+g:\work7\chess-master\chess-master\mongo\bson.h(69): warning C4005: 'INT32_MAX': macro redefinition
+  f:\vs2015\vc\include\stdint.h(54): note: see previous definition of 'INT32_MAX'
+  Generating Code...
+  database.zo.vcxproj -> G:\work7\Chess-master\Chess-master\build\..\bin\debug\database.zo.lib

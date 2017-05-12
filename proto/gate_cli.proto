@@ -1,0 +1,28 @@
+
+
+
+// const
+enum 
+
+
+message ets_actor
+{
+    required uint64                     rid                     = 1;
+    optional string                     name                    = 2;  //游戏内名字
+    required string                     uin                     = 3;  //平台帐号名
+    optional string                     icon                    = 4;  //head icon name
+    optional uint32                     create_ts               = 5;  //记录首次开始游戏时间，即创建角色时间
+    optional uint32                     last_msg_ts             = 6;  //最近一次收包时间戳
+    optional uint32                     freshman_id             = 7;  //选择的freshman 组id
+    optional uint32                     vip_level               = 8;  //vip等级
+    optional uint32                     vip_exp_total           = 9;  //vip总经验 
+}
+
+
+message ets_game_svr
+{
+	required uint32          svr_id       = 1;
+	optional string          svr_name     = 2;
+	optional uint32          svr_type     = 3;
+}
+

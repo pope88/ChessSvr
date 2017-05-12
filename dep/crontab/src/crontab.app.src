@@ -1,0 +1,9 @@
+{application, crontab,
+ [ {description,  "crontab"}
+ , {vsn,          0.1}
+ , {registered,   []}
+ , {applications, [kernel, stdlib]}
+ , {mod,          {crontab_app, []}}
+ , {env,          []}
+ ]
+}.
