@@ -25,9 +25,6 @@ start_link(PoolId, Host, Port) ->
 handle_cast(_R, State) ->
 	{noreply, State}.
 
-handle_info(_Reason, State) ->
-	{noreply, State}.
-
 code_change(_OldVsn, State, _Extra) ->
 	{noreply, State}.
 
@@ -135,7 +132,13 @@ handle_call({execute, PoolId, Pkg}, From, State) ->
 		{ok, Conn, NewState} ->
 			svr_conn:execute(From, Conn#svr_conn.conn_pid, Pkg),
 			{noreply, NewState}
-	end.
+	end. 
+	
+handle_info(timeout, State)  ->
+	io:format("gate svr receive timeout event from gate~n"),
+	{noreply, State}.
+handle_info(_Reason, State) ->
+	{noreply, State}.
 	
 
 get_next_conn(PoolId, State) ->

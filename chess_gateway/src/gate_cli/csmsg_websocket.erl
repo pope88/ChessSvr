@@ -1,17 +1,28 @@
 -module(csmsg_websocket).
 
--export([msg_web_socket_handle/1]).
+-export([msg_ws_handle/1]).
+
+%% socket status
+-record(ws_state, {ws_socket, 
+                           ws_state,  % shake_hand, ready, unfinished
+                           timer_ref}).
 
 
-msg_web_socket_handle(Socket) ->
+msg_ws_handle(Socket, State) ->
     receive
         {tcp,Socket,Bin} ->
-            gen_tcp:send(Socket, list_to_binary(handshake(Bin))),
-            msg_handle(Socket);
+            NewState = process_ws({tcp, Socket, Bin}, State);
+            msg_ws_handle(Socket, NewState);
         Any ->
             io:format("Received(2): ~p~n",[Any]),
-            msg_web_socket_handle(Socket)
+            msg_ws_handle(Socket, State)
     end.
+
+process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State)
+    when State#state.ws_state =:= shake_hand
+
+
+
 
 handshake(Bin) ->
     Key = list_to_binary(lists:last(string:tokens(hd(lists:filter(fun(S) -> lists:prefix("Sec-WebSocket-Key:", S) end, string:tokens(binary_to_list(Bin), "\r\n"))), ": "))),
