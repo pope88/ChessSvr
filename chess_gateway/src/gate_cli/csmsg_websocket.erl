@@ -3,9 +3,11 @@
 -export([msg_ws_handle/1]).
 
 %% socket status
--record(ws_state, {ws_socket, 
-                           ws_state,  % shake_hand, ready, unfinished
-                           timer_ref}).
+-record(ws_state, { ws_socket, 
+                    ws_state,  % shake_hand, ready, unfinished
+                    timer_ref,
+                    rest_len,
+                    rest_data}).
 
 
 msg_ws_handle(Socket, State) ->
@@ -19,10 +21,65 @@ msg_ws_handle(Socket, State) ->
     end.
 
 process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State)
-    when State#state.ws_state =:= shake_hand
-
-
-
+   when State#ws_state.ws_state =:= shake_hand ->
+        % io:format ("request header = ~p~n", [Bin]),
+        HeaderList = binary:split (Bin, <<"\r\n">>, [global]),
+        HeaderTupleList = [list_to_tuple(binary:split (Header, <<": ">>)) || Header <- HeaderList],
+        SecWebSocketKey = proplists:get_value(<<"Sec-WebSocket-Key">>, HeaderTupleList),
+        Sha = crypto:hash(sha, [SecWebSocketKey, <<"258EAFA5-E914-47DA-95CA-C5AB0DC85B11">>]),
+        Base64 = base64:encode(Sha),
+        HandshakeHeader = [
+            <<"HTTP/1.1 101 Switching Protocols\r\n">>,
+            <<"Upgrade: websocket\r\n">>,
+            <<"Connection: Upgrade\r\n">>,
+            <<"Sec-WebSocket-Accept: ">>, Base64, <<"\r\n">>,
+            <<"\r\n">>
+        ],
+        ok = gen_tcp:send(WsSwocket, HandshakeHeader),
+        TimerRef = timer_callback(),
+        NewState = State#state{ws_state = ready,
+                               timer_ref = TimerRef},
+        NewState;
+process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State) 
+    when State#ws_state.ws_state =:= ready ->
+        <<_Fin:1, _Rsv:3, _Opcode:4, _Mask:1, Len:7, Rest/binary>> = Bin,
+        case Len of
+            126 ->
+                <<PayloadLength:16, RestData/binary>> = Rest;
+            127 ->
+                <<PayloadLength:64, RestData/binary>> = Rest;
+            _ ->
+                PayloadLength = Len,
+                RestData = Rest
+        end,
+        case PayloadLength > size(RestData) of
+            true ->
+                NewState = State#ws_state{ws_state = unfinished,
+                                       timer_ref = undefined,
+                                       rest_len = PayloadLength,
+                                       rest_data = RestData};
+            false ->
+                NewState = State#ws_state{timer_ref = undefined},
+                msg_handle(RestData, Uuid)
+        end,
+        NewState;
+process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket, rest_data = UnfinishedData, rest_len = UnfinishedLen} = State)
+    when State#ws_state.ws_state =:= unfinished ->
+        % masking length is 4
+        ReceivedData = list_to_binary([UnfinishedData, Bin]),
+        case UnfinishedLen + 4 - size(ReceivedData) > 0  of
+            true ->
+                NewState = State#ws_state{timer_ref = undefined, 
+                                            rest_data = ReceivedData};
+            false ->
+                NewState = State#ws_state{ws_state = ready,
+                                            timer_ref = undefined,
+                                            rest_data = <<>>,
+                                            rest_len = 0
+                                        },
+                websocket_data(WebSocket, ReceivedData)
+        end,
+        NewState.
 
 handshake(Bin) ->
     Key = list_to_binary(lists:last(string:tokens(hd(lists:filter(fun(S) -> lists:prefix("Sec-WebSocket-Key:", S) end, string:tokens(binary_to_list(Bin), "\r\n"))), ": "))),
@@ -38,42 +95,52 @@ handshake(Bin) ->
     "\r\n"
     ].
 
-%% 仅处理长度为125以内的文本消息
-websocket_data(Data) when is_list(Data) ->
-    websocket_data(list_to_binary(Data));
 
-websocket_data(<< 1:1, 0:3, 1:4, 1:1, Len:7, MaskKey:32, Rest/bits >>) when Len < 126 ->
-    <<End:Len/binary, _/bits>> = Rest,
-    Text = websocket_unmask(End, MaskKey, <<>>),
-    Text;
-
-websocket_data(_) ->
-    <<>>. 
+websocket_data(WebSocket, Data) ->
+    OriginData = websocket_unmask(Data),
+    case unicode:characters_to_list(OriginData) of
+        {incomplete, _, _} ->
+            io:format("Server can't decode data");
+        DataContent ->
+            msg_dispatch(WebSocket, DataContent)
+    end.
 
 %% 由于Browser发过来的数据都是mask的,所以需要unmask
-websocket_unmask(<<>>, _, Unmasked) ->
-    Unmasked;
+websocket_unmask(Data) ->   
+    <<Masking:4/binary, MaskedData/binary>> = Data,
+    websocket_unmask(MaskedData, Masking).
+websocket_unmask(MaskedData, Masking) ->
+    websocket_unmask(MaskedData, Masking, <<>>).
+websocket_unmask(MaskedData, Masking = <<MA:8, MB:8, MC:8, MD:8>>, Acc) ->
+    case size (MaskedData) of
+        0 -> Acc;
+        1 ->
+            <<A:8>> = MaskedData,
+            <<Acc/binary, (MA bxor A)>>;
+        2 ->
+            <<A:8, B:8>> = MaskedData,
+            <<Acc/binary, (MA bxor A), (MB bxor B)>>;
+        3 ->
+            <<A:8, B:8, C:8>> = MaskedData,
+            <<Acc/binary, (MA bxor A), (MB bxor B), (MC bxor C)>>;
+        _Other ->
+            <<A:8, B:8, C:8, D:8, Rest/binary>> = MaskedData,
+            Acc1 = <<Acc/binary, (MA bxor A), (MB bxor B), (MC bxor C), (MD bxor D)>>,
+            unmask (Rest, Masking, Acc1)
+    end.
 
-websocket_unmask(<< O:32, Rest/bits >>, MaskKey, Acc) ->
-    T = O bxor MaskKey,
-    websocket_unmask(Rest, MaskKey, << Acc/binary, T:32 >>);
-
-websocket_unmask(<< O:24 >>, MaskKey, Acc) ->
-    << MaskKey2:24, _:8 >> = << MaskKey:32 >>,
-    T = O bxor MaskKey2,
-    << Acc/binary, T:24 >>;
-
-websocket_unmask(<< O:16 >>, MaskKey, Acc) ->
-    << MaskKey2:16, _:16 >> = << MaskKey:32 >>,
-    T = O bxor MaskKey2,
-    << Acc/binary, T:16 >>;
-
-websocket_unmask(<< O:8 >>, MaskKey, Acc) ->
-    << MaskKey2:8, _:24 >> = << MaskKey:32 >>,
-    T = O bxor MaskKey2,
-    << Acc/binary, T:8 >>.
+build_frame (Content) ->
+    Bin = unicode:characters_to_binary (Content),
+    DataLength = size (Bin),
+    build_frame (DataLength, Bin).
 
 
+build_frame (DataLength, Bin) when DataLength =< 125 ->
+    <<1:1, 0:3, 1:4, 0:1, DataLength:7, Bin/binary>>;
+build_frame (DataLength, Bin) when DataLength >= 125, DataLength =< 65535 ->
+    <<1:1, 0:3, 1:4, 0:1, 126:7, DataLength:16, Bin/binary>>;
+build_frame (DataLength, Bin) when DataLength > 65535 ->
+    <<1:1, 0:3, 1:4, 0:1, 127:7, DataLength:64, Bin/binary>>.
 
 %%--------------------my prase----------------------
 msg_handle(Socket) ->
