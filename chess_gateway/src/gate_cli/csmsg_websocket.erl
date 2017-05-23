@@ -5,7 +5,6 @@
 %% socket status
 -record(ws_state, { ws_socket, 
                     ws_state,  % shake_hand, ready, unfinished
-                    timer_ref,
                     rest_len,
                     rest_data}).
 
@@ -15,9 +14,11 @@ msg_ws_handle(Socket, State) ->
         {tcp,Socket,Bin} ->
             NewState = process_ws({tcp, Socket, Bin}, State);
             msg_ws_handle(Socket, NewState);
-        Any ->
-            io:format("Received(2): ~p~n",[Any]),
-            msg_ws_handle(Socket, State)
+        {tcp_closed,Socket} ->
+             io:format("msg handle socket closed",[Any]),
+        _Err ->
+            io:format("Received(2): ~p~n",[_Err]),
+            socket_closed
     end.
 
 process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State)
@@ -37,8 +38,7 @@ process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State)
         ],
         ok = gen_tcp:send(WsSwocket, HandshakeHeader),
         TimerRef = timer_callback(),
-        NewState = State#state{ws_state = ready,
-                               timer_ref = TimerRef},
+        NewState = State#state{ws_state = ready},
         NewState;
 process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State) 
     when State#ws_state.ws_state =:= ready ->
@@ -55,12 +55,11 @@ process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State)
         case PayloadLength > size(RestData) of
             true ->
                 NewState = State#ws_state{ws_state = unfinished,
-                                       timer_ref = undefined,
                                        rest_len = PayloadLength,
                                        rest_data = RestData};
             false ->
-                NewState = State#ws_state{timer_ref = undefined},
-                msg_handle(RestData, Uuid)
+                NewState = State,
+                websocket_data(WebSocket, ReceivedData)
         end,
         NewState;
 process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket, rest_data = UnfinishedData, rest_len = UnfinishedLen} = State)
@@ -69,11 +68,9 @@ process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket, rest_data = U
         ReceivedData = list_to_binary([UnfinishedData, Bin]),
         case UnfinishedLen + 4 - size(ReceivedData) > 0  of
             true ->
-                NewState = State#ws_state{timer_ref = undefined, 
-                                            rest_data = ReceivedData};
+                NewState = State#ws_state{rest_data = ReceivedData};
             false ->
-                NewState = State#ws_state{ws_state = ready,
-                                            timer_ref = undefined,
+                NewState = State#ws_state{  ws_state = ready,
                                             rest_data = <<>>,
                                             rest_len = 0
                                         },
@@ -143,19 +140,19 @@ build_frame (DataLength, Bin) when DataLength > 65535 ->
     <<1:1, 0:3, 1:4, 0:1, 127:7, DataLength:64, Bin/binary>>.
 
 %%--------------------my prase----------------------
-msg_handle(Socket) ->
-	receive
-		{tcp, Socket, WebBin} ->
-			log4erl:debug("Server Rece peername ~p", [lib_util:peername(Socket)]),
-            Bin = websocket_data(WebBin),
-			msg_dispatch(Socket, Bin),
-			inet:setopts(Socket, [{active, once}]),
-			msg_handle(Socket);
-		{tcp_closed, Socket} ->
-			log4erl:debug("Server socket[~p] closed",[Socket]);
-		_Err ->
-			socket_closed
-	end.
+% msg_handle(Socket) ->
+% 	receive
+% 		{tcp, Socket, WebBin} ->
+% 			log4erl:debug("Server Rece peername ~p", [lib_util:peername(Socket)]),
+%             Bin = websocket_data(WebBin),
+% 			msg_dispatch(Socket, Bin),
+% 			inet:setopts(Socket, [{active, once}]),
+% 			msg_handle(Socket);
+% 		{tcp_closed, Socket} ->
+% 			log4erl:debug("Server socket[~p] closed",[Socket]);
+% 		_Err ->
+% 			socket_closed
+% 	end.
 
 msg_head_check(MergeHead, Head) ->
     case Head#csmsghead.msg_id of
@@ -182,4 +179,23 @@ msg_dispatch(Socket, EnBin) ->
     ActorRid = MergeHead#csmsgmergehead.rid,
     log4erl:debug("Server Handle Actor ~p Msg ~p Seq ~p", [ActorRid, Head#csmsghead.msg_id, MergeHead#csmsgmergehead.seq]),
     case msg_head_check(MergeHead, Head) of
-        
+        true  ->
+            case msg_head_check(MergeHead, Head) of
+                true ->
+                    Mod = Head#csmsghead.msg_type,
+                    case mod_open:check(MergeHead, Head) of
+                        true ->
+                            case actor:is_valid_actor_rid(ActorRid) of
+                                true ->
+                                    msg_queue_clean(ActorRid),
+                                    new_activity_actor:msg_before_handle(ActorRid),
+                                    actor:update_last_msg_ts(ActorRid),
+                                    msgbox:fetch(ActorRid),
+                                    ok;
+                                _ ->
+                                    ok
+                            end,
+                            MsgId = Head#csmsghead.msg_id,
+                            ok = Mod:recv(MsgId, {MergeHead, Socket}, Body);
+                        false ->
+                            ptlogin:send_login_rsp(ActorRid, {MergeHead, Socket}, err_mod_not_open)
