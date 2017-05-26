@@ -199,3 +199,6 @@ msg_dispatch(Socket, EnBin) ->
                             ok = Mod:recv(MsgId, {MergeHead, Socket}, Body);
                         false ->
                             ptlogin:send_login_rsp(ActorRid, {MergeHead, Socket}, err_mod_not_open)
+                    end;
+                last_msg ->
+                    

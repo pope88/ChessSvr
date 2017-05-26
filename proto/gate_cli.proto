@@ -1,9 +1,12 @@
 
 
-
-// const
-enum 
-
+// res
+message res_gate_config
+{
+	required uint32       gate_id     = 1;
+	optional string       gate_name   = 2;
+	optional uint32 	  gate_type   = 3;
+}
 
 message ets_actor
 {
