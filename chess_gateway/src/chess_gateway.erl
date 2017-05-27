@@ -11,6 +11,7 @@ start_link() ->
 	gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
 
 s_init_mod() ->
+	ok = gate_mgr:mod_init(),
 	ok.
 
 init(_State) ->

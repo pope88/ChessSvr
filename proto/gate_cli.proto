@@ -6,13 +6,16 @@ message res_gate_config
 	required uint32       gate_id     = 1;
 	optional string       gate_name   = 2;
 	optional uint32 	  gate_type   = 3;
+	optional string       gate_ip     = 4;
+	optional uint32       gate_port   = 5;
 }
 
 message ets_actor
 {
-    required uint64                     rid                     = 1;  //玩家唯一id
-    required string                     uin                     = 2;  //平台帐号名
-    optional uint32                     last_msg_ts             = 3;  //最近一次收到的包信息
+    required uint64        rid           = 1;  //玩家唯一id
+    optional uint32        last_msg_ts   = 2;  //最近一次收到的包信息
+    optional uint32        seesion       = 3;
+    optional uint32        req           = 4;   
 }
 
 

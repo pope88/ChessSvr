@@ -1,0 +1,2 @@
+-define(RES_GATE_CONFIG_META, res_gate_config_meta).
+-define(RES_GATE_CONFIG, res_gate_config).
