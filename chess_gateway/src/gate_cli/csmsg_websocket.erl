@@ -1,6 +1,6 @@
 -module(csmsg_websocket).
 
--export([msg_ws_handle/1]).
+-export([msg_ws_handle/2]).
 
 %% socket status
 -record(ws_state, { ws_socket, 
@@ -9,13 +9,15 @@
                     rest_data}).
 
 
+init_state(WebSocket) ->
+    #ws_state{ws_socket = WebSocket, ws_state = shake_hand, rest_data = <<>>, rest_len = 0}.
 msg_ws_handle(Socket, State) ->
     receive
         {tcp,Socket,Bin} ->
-            NewState = process_ws({tcp, Socket, Bin}, State);
+            NewState = process_ws({tcp, Socket, Bin}, State),
             msg_ws_handle(Socket, NewState);
         {tcp_closed,Socket} ->
-             io:format("msg handle socket closed",[Any]),
+             io:format("msg handle socket closed");
         _Err ->
             io:format("Received(2): ~p~n",[_Err]),
             socket_closed
@@ -36,9 +38,8 @@ process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State)
             <<"Sec-WebSocket-Accept: ">>, Base64, <<"\r\n">>,
             <<"\r\n">>
         ],
-        ok = gen_tcp:send(WsSwocket, HandshakeHeader),
-        TimerRef = timer_callback(),
-        NewState = State#state{ws_state = ready},
+        ok = gen_tcp:send(WebSocket, HandshakeHeader),
+        NewState = State#ws_state{ws_state = ready},
         NewState;
 process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State) 
     when State#ws_state.ws_state =:= ready ->
@@ -59,7 +60,7 @@ process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State)
                                        rest_data = RestData};
             false ->
                 NewState = State,
-                websocket_data(WebSocket, ReceivedData)
+                websocket_data(WebSocket, RestData)
         end,
         NewState;
 process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket, rest_data = UnfinishedData, rest_len = UnfinishedLen} = State)
@@ -123,13 +124,13 @@ websocket_unmask(MaskedData, Masking = <<MA:8, MB:8, MC:8, MD:8>>, Acc) ->
         _Other ->
             <<A:8, B:8, C:8, D:8, Rest/binary>> = MaskedData,
             Acc1 = <<Acc/binary, (MA bxor A), (MB bxor B), (MC bxor C), (MD bxor D)>>,
-            unmask (Rest, Masking, Acc1)
+            websocket_unmask(Rest, Masking, Acc1)
     end.
 
-build_frame (Content) ->
-    Bin = unicode:characters_to_binary (Content),
-    DataLength = size (Bin),
-    build_frame (DataLength, Bin).
+build_frame(Content) ->
+    Bin = unicode:characters_to_binary(Content),
+    DataLength = size(Bin),
+    build_frame(DataLength, Bin).
 
 
 build_frame (DataLength, Bin) when DataLength =< 125 ->
@@ -171,34 +172,35 @@ msg_head_check(MergeHead, Head) ->
             end
     end.
 
-msg_dispatch(Socket, EnBin) ->
-    Bin = EnBin,%%lib_crypto:decrypt(EnBin),
-    #csmsgmergehead{head = MergeHead, msg = [Msg]} = gate_cli_pb:decode_csmsgmerge(Bin),
-    Head = Msg#csmsg.head,
-    Body = Msg#csmsg.body,
-    ActorRid = MergeHead#csmsgmergehead.rid,
-    log4erl:debug("Server Handle Actor ~p Msg ~p Seq ~p", [ActorRid, Head#csmsghead.msg_id, MergeHead#csmsgmergehead.seq]),
-    case msg_head_check(MergeHead, Head) of
-        true  ->
-            case msg_head_check(MergeHead, Head) of
-                true ->
-                    Mod = Head#csmsghead.msg_type,
-                    case mod_open:check(MergeHead, Head) of
-                        true ->
-                            case actor:is_valid_actor_rid(ActorRid) of
-                                true ->
-                                    msg_queue_clean(ActorRid),
-                                    new_activity_actor:msg_before_handle(ActorRid),
-                                    actor:update_last_msg_ts(ActorRid),
-                                    msgbox:fetch(ActorRid),
-                                    ok;
-                                _ ->
-                                    ok
-                            end,
-                            MsgId = Head#csmsghead.msg_id,
-                            ok = Mod:recv(MsgId, {MergeHead, Socket}, Body);
-                        false ->
-                            ptlogin:send_login_rsp(ActorRid, {MergeHead, Socket}, err_mod_not_open)
-                    end;
-                last_msg ->
+msg_dispatch(_Socket, _EnBin) ->
+    ok.
+    % Bin = EnBin,%%lib_crypto:decrypt(EnBin),
+    % #csmsgmergehead{head = MergeHead, msg = [Msg]} = gate_cli_pb:decode_csmsgmerge(Bin),
+    % Head = Msg#csmsg.head,
+    % Body = Msg#csmsg.body,
+    % ActorRid = MergeHead#csmsgmergehead.rid,
+    % log4erl:debug("Server Handle Actor ~p Msg ~p Seq ~p", [ActorRid, Head#csmsghead.msg_id, MergeHead#csmsgmergehead.seq]),
+    % case msg_head_check(MergeHead, Head) of
+    %     true  ->
+    %         case msg_head_check(MergeHead, Head) of
+    %             true ->
+    %                 Mod = Head#csmsghead.msg_type,
+    %                 case mod_open:check(MergeHead, Head) of
+    %                     true ->
+    %                         case actor:is_valid_actor_rid(ActorRid) of
+    %                             true ->
+    %                                 msg_queue_clean(ActorRid),
+    %                                 new_activity_actor:msg_before_handle(ActorRid),
+    %                                 actor:update_last_msg_ts(ActorRid),
+    %                                 msgbox:fetch(ActorRid),
+    %                                 ok;
+    %                             _ ->
+    %                                 ok
+    %                         end,
+    %                         MsgId = Head#csmsghead.msg_id,
+    %                         ok = Mod:recv(MsgId, {MergeHead, Socket}, Body);
+    %                     false ->
+    %                         ptlogin:send_login_rsp(ActorRid, {MergeHead, Socket}, err_mod_not_open)
+    %                 end;
+    %             last_msg ->
                     
