@@ -12,6 +12,12 @@ mod_init() ->
 	ets:new(?ETS_ACTOR, [{keypos,#ets_actor.rid}, named_table, public, set, compressed, {write_concurrency,true}]),
 	ok.
 
+init_actor(_T) ->
+	ok.
+delete_actor(_T) ->
+	ok.
+
+
 % %如果存在玩家上次登录记录,则保留上次的login_ts
 init_actor(ActorRid) ->
     case ets:lookup(?ETS_ACTOR, ActorRid) of
