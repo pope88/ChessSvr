@@ -1,6 +1,7 @@
 -module(csmsg_websocket).
 
--export([msg_ws_handle/1]).
+-export([init_state/1, 
+        msg_ws_handle/1]).
 
 %% socket status
 -record(ws_state, { ws_socket, 
@@ -9,13 +10,16 @@
                     rest_data}).
 
 
-msg_ws_handle(Socket, State) ->
+init_state(WebSocket) ->
+    #ws_state{ws_socket = WebSocket, ws_state = shake_hand, rest_len = 0, rest_data = <<>>}.
+msg_ws_handle(Socket, State) 
     receive
         {tcp,Socket,Bin} ->
             NewState = process_ws({tcp, Socket, Bin}, State);
             msg_ws_handle(Socket, NewState);
         {tcp_closed,Socket} ->
-             io:format("msg handle socket closed",[Any]),
+            io:format("msg handle socket closed",[Any]),
+            ok;
         _Err ->
             io:format("Received(2): ~p~n",[_Err]),
             socket_closed
@@ -37,7 +41,6 @@ process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State)
             <<"\r\n">>
         ],
         ok = gen_tcp:send(WsSwocket, HandshakeHeader),
-        TimerRef = timer_callback(),
         NewState = State#state{ws_state = ready},
         NewState;
 process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket} = State) 
@@ -78,19 +81,19 @@ process_ws({tcp, WebSocket, Bin}, #ws_state{ws_socket = WebSocket, rest_data = U
         end,
         NewState.
 
-handshake(Bin) ->
-    Key = list_to_binary(lists:last(string:tokens(hd(lists:filter(fun(S) -> lists:prefix("Sec-WebSocket-Key:", S) end, string:tokens(binary_to_list(Bin), "\r\n"))), ": "))),
-    Accept = base64:encode(crypto:hash(sha,<< Key/binary, "258EAFA5-E914-47DA-95CA-C5AB0DC85B11" >>)),
-    %%{ok, Write_log} = file:open("D:/Erlang/erlang_log",[append]),
-    %%io:format(Write_log, "Accept: ~s~n", [Accept]),
-    [
-     "HTTP/1.1 101 Switching Protocols\r\n",
-    "connection: Upgrade\r\n",
-    "upgrade: websocket\r\n",
-    "Blog: http://blog.csdn.net/jom_ch\r\n",
-    "sec-websocket-accept: ", Accept, "\r\n",
-    "\r\n"
-    ].
+% handshake(Bin) ->
+%     Key = list_to_binary(lists:last(string:tokens(hd(lists:filter(fun(S) -> lists:prefix("Sec-WebSocket-Key:", S) end, string:tokens(binary_to_list(Bin), "\r\n"))), ": "))),
+%     Accept = base64:encode(crypto:hash(sha,<< Key/binary, "258EAFA5-E914-47DA-95CA-C5AB0DC85B11" >>)),
+%     %%{ok, Write_log} = file:open("D:/Erlang/erlang_log",[append]),
+%     %%io:format(Write_log, "Accept: ~s~n", [Accept]),
+%     [
+%      "HTTP/1.1 101 Switching Protocols\r\n",
+%     "connection: Upgrade\r\n",
+%     "upgrade: websocket\r\n",
+%     "Blog: http://blog.csdn.net/jom_ch\r\n",
+%     "sec-websocket-accept: ", Accept, "\r\n",
+%     "\r\n"
+%     ].
 
 
 websocket_data(WebSocket, Data) ->

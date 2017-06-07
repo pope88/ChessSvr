@@ -42,7 +42,7 @@ init([]) ->
     {ok, { RestartStrategy, Children} }.
 %% Type:game, lobby 
 start_new_gate_svr(Type, GateName, Ip, Port)>
-    supervisor:start_child ({Type, GateName}, {svr, start_link, [GateName, Ip, Port]}, permanent, infinity, worker, [svr]}).
+    supervisor:start_child({Type, GateName}, {svr, start_link, [GateName, Ip, Port]}, permanent, infinity, worker, [svr]}).
 
 stop_new_gate_svr(_GateName) ->
     ok.

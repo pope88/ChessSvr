@@ -1,4 +1,4 @@
--module(csmsg).
+-module(csmsg_socket).
 
 -export([msg_handle/1]).
 

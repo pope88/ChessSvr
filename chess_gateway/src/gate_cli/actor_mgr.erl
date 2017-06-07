@@ -34,3 +34,11 @@ delete_actor(ActorRid) ->
             OnlineSeconds = LastMsgTs - LoginTs
     end,
     ets:delete(?ETS_ACTOR, ActorRid).
+
+% is_valid_actor(ActorRid) ->
+%     case ets:lookup(?ETS_ACTOR, ActorRid) of
+%         [] ->
+%             false;
+%         _ ->
+%             true;
+%     end.           
